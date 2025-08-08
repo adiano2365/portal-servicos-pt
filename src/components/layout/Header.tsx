@@ -4,7 +4,7 @@ const Header = () => {
   return <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur">
       <div className="container mx-auto flex h-16 items-center justify-between gap-4 px-4 bg-[#073135]">
         <Link to="/" className="flex items-center gap-2 font-semibold text-foreground">
-          <span className="text-xl">PortalEmpresa</span>
+          <span className="text-4xl text-amber-500">LinkaPro</span>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm">
           <NavLink to="/noticias" className={({
