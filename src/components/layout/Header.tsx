@@ -22,7 +22,7 @@ const Header = () => {
         </nav>
         <div className="flex items-center gap-2">
           <Link to="/auth/login"><Button variant="outline" size="sm">Entrar</Button></Link>
-          <Link to="/auth/register" className="rounded-sm bg-emerald-950 hover:bg-emerald-800 text-sm font-thin text-slate-50"><Button variant="hero" size="sm">Registar</Button></Link>
+          <Link to="/auth/register" className="rounded-sm text-sm text-slate-50 font-extralight bg-amber-500 hover:bg-amber-400"><Button variant="hero" size="sm">Registar</Button></Link>
         </div>
       </div>
     </header>;
