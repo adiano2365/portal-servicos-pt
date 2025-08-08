@@ -16,7 +16,19 @@ import Contato from "./pages/Contato";
 import AuthLogin from "./pages/AuthLogin";
 import AuthRegister from "./pages/AuthRegister";
 import EmpresaDashboard from "./pages/EmpresaDashboard";
-import AdminDashboard from "./pages/AdminDashboard";
+import AdminLayout from "@/components/admin/AdminLayout";
+import AdminDashboardPage from "@/pages/admin/Dashboard";
+import Funcionarios from "@/pages/admin/Funcionarios";
+import Utilizadores from "@/pages/admin/Utilizadores";
+import EmpresasAdmin from "@/pages/admin/Empresas";
+import Consultores from "@/pages/admin/Consultores";
+import VagasAdmin from "@/pages/admin/Vagas";
+import Bolsas from "@/pages/admin/Bolsas";
+import Subscricoes from "@/pages/admin/Subscricoes";
+import Consultorias from "@/pages/admin/Consultorias";
+import Historico from "@/pages/admin/Historico";
+import Pagamentos from "@/pages/admin/Pagamentos";
+import AdminFormulario from "@/pages/admin/Formulario";
 
 const queryClient = new QueryClient();
 
@@ -39,8 +51,24 @@ const App = () => (
             <Route path="auth/login" element={<AuthLogin />} />
             <Route path="auth/register" element={<AuthRegister />} />
             <Route path="empresa" element={<EmpresaDashboard />} />
-            <Route path="admin" element={<AdminDashboard />} />
           </Route>
+
+          {/* Admin area with its own layout and nested routes */}
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboardPage />} />
+            <Route path="funcionarios" element={<Funcionarios />} />
+            <Route path="utilizadores" element={<Utilizadores />} />
+            <Route path="empresas" element={<EmpresasAdmin />} />
+            <Route path="consultores" element={<Consultores />} />
+            <Route path="vagas" element={<VagasAdmin />} />
+            <Route path="bolsas" element={<Bolsas />} />
+            <Route path="subscricoes" element={<Subscricoes />} />
+            <Route path="consultorias" element={<Consultorias />} />
+            <Route path="historico" element={<Historico />} />
+            <Route path="pagamentos" element={<Pagamentos />} />
+            <Route path="formulario" element={<AdminFormulario />} />
+          </Route>
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
