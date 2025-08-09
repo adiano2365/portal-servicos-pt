@@ -29,6 +29,9 @@ import Consultorias from "@/pages/admin/Consultorias";
 import Historico from "@/pages/admin/Historico";
 import Pagamentos from "@/pages/admin/Pagamentos";
 import AdminFormulario from "@/pages/admin/Formulario";
+import AdminEmail from "@/pages/admin/Email";
+import PublicConfigurations from "@/pages/admin/PublicConfigurations";
+import AdminLogin from "@/pages/admin/AdminLogin";
 
 const queryClient = new QueryClient();
 
@@ -66,8 +69,12 @@ const App = () => (
             <Route path="consultorias" element={<Consultorias />} />
             <Route path="historico" element={<Historico />} />
             <Route path="pagamentos" element={<Pagamentos />} />
+            <Route path="email" element={<AdminEmail />} />
+            <Route path="public-configurations" element={<PublicConfigurations />} />
             <Route path="formulario" element={<AdminFormulario />} />
           </Route>
+
+          <Route path="/admin/login" element={<AdminLogin />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

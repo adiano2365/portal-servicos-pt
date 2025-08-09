@@ -22,6 +22,8 @@ import {
   DollarSign,
   UserCog,
   UserCheck,
+  Mail,
+  Settings,
 } from "lucide-react";
 
 const items = [
@@ -34,6 +36,8 @@ const items = [
   { title: "Bolsas de Estudo", url: "/admin/bolsas", icon: GraduationCap },
   { title: "Subscrições", url: "/admin/subscricoes", icon: CreditCard },
   { title: "Consultorias", url: "/admin/consultorias", icon: DollarSign },
+  { title: "Gestão de Email", url: "/admin/email", icon: Mail },
+  { title: "Public Configurations", url: "/admin/public-configurations", icon: Settings },
   { title: "Histórico", url: "/admin/historico", icon: History },
   { title: "Pagamentos de Serviço", url: "/admin/pagamentos", icon: CreditCard },
 ];
