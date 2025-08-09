@@ -2,8 +2,16 @@ import hero from "@/assets/hero-portalempresa.jpg";
 import { Button } from "@/components/ui/button";
 import Seo from "@/components/Seo";
 import { Link } from "react-router-dom";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
+import { useEffect, useState } from "react";
 
 const Index = () => {
+  const [api, setApi] = useState<CarouselApi | null>(null);
+  useEffect(() => {
+    if (!api) return;
+    const id = setInterval(() => api.scrollNext(), 120000);
+    return () => clearInterval(id);
+  }, [api]);
   return (
     <div>
       <Seo
@@ -13,29 +21,63 @@ const Index = () => {
       />
 
       <section className="relative overflow-hidden">
-        <div className="bg-gradient-hero/20 absolute inset-0" aria-hidden="true" />
-        <div className="container mx-auto grid md:grid-cols-2 gap-8 px-4 py-16 md:py-24 items-center">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-              Conecte a sua empresa aos melhores provedores de serviços
-            </h1>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Notícias, ofertas de emprego e um marketplace para divulgar e contratar serviços em Portugal.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/empresas"><Button size="lg" variant="hero">Procurar Empresas</Button></Link>
-              <Link to="/auth/register"><Button size="lg" variant="accent">Publicar Anúncio</Button></Link>
-            </div>
-          </div>
-          <div className="relative">
-            <img
-              src={hero}
-              alt="Ilustração moderna de conexões de negócios em Portugal"
-              loading="lazy"
-              className="w-full rounded-xl shadow-elevated"
-            />
-          </div>
-        </div>
+        <Carousel setApi={setApi} opts={{ loop: true }} className="w-full">
+          <CarouselContent>
+            <CarouselItem>
+              <div className="relative">
+                <div className="bg-gradient-hero/20 absolute inset-0" aria-hidden="true" />
+                <div className="container mx-auto grid md:grid-cols-2 gap-8 px-4 py-16 md:py-24 items-center">
+                  <div>
+                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+                      Conecte a sua empresa aos melhores provedores de serviços
+                    </h1>
+                    <p className="mt-4 text-lg text-muted-foreground">
+                      Notícias, ofertas de emprego e um marketplace para divulgar e contratar serviços em Portugal.
+                    </p>
+                    <div className="mt-8 flex flex-wrap gap-3">
+                      <Link to="/empresas"><Button size="lg" variant="hero">Procurar Empresas</Button></Link>
+                      <Link to="/auth/register"><Button size="lg" variant="accent">Publicar Anúncio</Button></Link>
+                    </div>
+                  </div>
+                  <div className="relative">
+                    <img
+                      src={hero}
+                      alt="Ilustração moderna de conexões de negócios em Portugal"
+                      loading="lazy"
+                      className="w-full rounded-xl shadow-elevated"
+                    />
+                  </div>
+                </div>
+              </div>
+            </CarouselItem>
+            <CarouselItem>
+              <div className="container mx-auto grid md:grid-cols-2 gap-8 px-4 py-16 md:py-24 items-center">
+                <div>
+                  <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+                    Destaques do PortalEmpresa
+                  </h1>
+                  <p className="mt-4 text-lg text-muted-foreground">
+                    Explore serviços verificados, notícias e oportunidades em tempo real.
+                  </p>
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    <Link to="/noticias"><Button size="lg" variant="hero">Ver notícias</Button></Link>
+                    <Link to="/ofertas"><Button size="lg" variant="accent">Ver ofertas</Button></Link>
+                  </div>
+                </div>
+                <div className="relative">
+                  <img
+                    src={hero}
+                    alt="Destaques do PortalEmpresa"
+                    loading="lazy"
+                    className="w-full rounded-xl shadow-elevated"
+                  />
+                </div>
+              </div>
+            </CarouselItem>
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </section>
 
       <section className="container mx-auto px-4 py-12 grid gap-10 md:grid-cols-3">
