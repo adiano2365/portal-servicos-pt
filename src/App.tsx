@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -32,6 +33,7 @@ import AdminFormulario from "@/pages/admin/Formulario";
 import AdminEmail from "@/pages/admin/Email";
 import PublicConfigurations from "@/pages/admin/PublicConfigurations";
 import AdminLogin from "@/pages/admin/AdminLogin";
+import AdminRouteGuard from "@/components/admin/AdminRouteGuard";
 
 const queryClient = new QueryClient();
 
@@ -56,8 +58,15 @@ const App = () => (
             <Route path="empresa" element={<EmpresaDashboard />} />
           </Route>
 
-          {/* Admin area with its own layout and nested routes */}
-          <Route path="/admin" element={<AdminLayout />}>
+          {/* Área de Admin protegida por papel "admin" */}
+          <Route
+            path="/admin"
+            element={
+              <AdminRouteGuard>
+                <AdminLayout />
+              </AdminRouteGuard>
+            }
+          >
             <Route index element={<AdminDashboardPage />} />
             <Route path="funcionarios" element={<Funcionarios />} />
             <Route path="utilizadores" element={<Utilizadores />} />
