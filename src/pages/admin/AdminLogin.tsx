@@ -32,7 +32,7 @@ export default function AdminLogin() {
       if (!userId) return;
       // Verificar papel depois
       setTimeout(async () => {
-        const { data } = await supabase
+        const { data } = await (supabase as any)
           .from("user_roles")
           .select("role")
           .eq("user_id", userId)
@@ -48,7 +48,7 @@ export default function AdminLogin() {
     supabase.auth.getSession().then(async ({ data: { session } }) => {
       const userId = session?.user?.id;
       if (!userId) return;
-      const { data } = await supabase
+      const { data } = await (supabase as any)
         .from("user_roles")
         .select("role")
         .eq("user_id", userId)
@@ -98,7 +98,7 @@ export default function AdminLogin() {
       }
 
       // Verificar papel admin
-      const { data, error: roleError } = await supabase
+      const { data, error: roleError } = await (supabase as any)
         .from("user_roles")
         .select("role")
         .eq("user_id", (await supabase.auth.getUser()).data.user?.id || "")
@@ -202,3 +202,4 @@ export default function AdminLogin() {
     </div>
   );
 }
+

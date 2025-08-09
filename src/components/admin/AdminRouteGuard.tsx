@@ -11,7 +11,7 @@ export default function AdminRouteGuard({ children }: { children: React.ReactNod
   // Separa a verificação do papel numa função
   const checkAdminRole = async (userId: string) => {
     console.log("[AdminRouteGuard] Verificando papel para", userId);
-    const { data, error } = await supabase
+    const { data, error } = await (supabase as any)
       .from("user_roles")
       .select("role")
       .eq("user_id", userId)
@@ -72,3 +72,4 @@ export default function AdminRouteGuard({ children }: { children: React.ReactNod
 
   return <>{children}</>;
 }
+
